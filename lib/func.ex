@@ -1,18 +1,7 @@
 defmodule Func do
-  @moduledoc """
-  Documentation for Func.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Func.hello
-      :world
-
-  """
-  def hello do
-    :world
+  defmacro __using__(_opts) do
+    quote do
+      import Func.Function
+    end
   end
 end
