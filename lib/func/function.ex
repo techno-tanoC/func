@@ -26,4 +26,8 @@ defmodule Func.Function do
   def curry_flip(func) do
     curry(flip(func))
   end
+
+  def compose(f, g) do
+    fn x -> f.(g.(x)) end
+  end
 end
