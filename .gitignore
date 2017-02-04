@@ -1,0 +1,12 @@
+
+# Created by https://www.gitignore.io/api/elixir
+
+### Elixir ###
+/_build
+/cover
+/deps
+erl_crash.dump
+*.ez
+*.beam
+
+# End of https://www.gitignore.io/api/elixir
