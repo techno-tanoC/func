@@ -8,5 +8,6 @@
 erl_crash.dump
 *.ez
 *.beam
+/doc
 
 # End of https://www.gitignore.io/api/elixir
