@@ -16,9 +16,7 @@ defmodule Func.Function do
       iex> Func.Function.id().(1)
       1
   """
-  def id() do
-    fn val -> val end
-  end
+  def id(), do: fn val -> val end
 
   @doc """
   Constant function. It always returns first argument.
@@ -26,9 +24,7 @@ defmodule Func.Function do
       iex> Func.Function.const(1).(2)
       1
   """
-  def const(val) do
-    fn _ -> val end
-  end
+  def const(val), do: fn _ -> val end
 
   @doc """
   The function which the value is got by execution.
@@ -36,9 +32,7 @@ defmodule Func.Function do
       iex> Func.Function.run(1).()
       1
   """
-  def run(val) do
-    fn -> val end
-  end
+  def run(val), do: fn -> val end
 
   @doc """
   Curry function.
@@ -60,9 +54,7 @@ defmodule Func.Function do
       iex> Func.Function.uncurry(fn a -> fn b -> a - b end end).(2, 1)
       1
   """
-  def uncurry(func) do
-    fn a, b -> func.(a).(b) end
-  end
+  def uncurry(func), do: fn a, b -> func.(a).(b) end
 
   @doc """
   Flip function.
@@ -70,9 +62,7 @@ defmodule Func.Function do
       iex> Func.Function.flip(&-/2).(1, 2)
       1
   """
-  def flip(func) do
-    fn a, b -> func.(b, a) end
-  end
+  def flip(func), do: fn a, b -> func.(b, a) end
 
   @doc """
   Flip and curry function.
@@ -81,7 +71,11 @@ defmodule Func.Function do
       1
   """
   def curry_flip(func) do
-    curry(flip(func))
+    fn a ->
+      fn b ->
+        func.(b, a)
+      end
+    end
   end
 
   @doc """
@@ -90,7 +84,5 @@ defmodule Func.Function do
       iex> Func.Function.compose(&String.to_integer/1, &Integer.to_string/1).(1)
       1
   """
-  def compose(f, g) do
-    fn x -> f.(g.(x)) end
-  end
+  def compose(f, g), do: fn x -> f.(g.(x)) end
 end
