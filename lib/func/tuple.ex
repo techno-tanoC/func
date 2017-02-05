@@ -4,6 +4,7 @@ defmodule Func.Tuple do
 
       iex> Func.Tuple.fst({1, 2})
       1
+
   """
   def fst(pair)
   def fst({x, _}), do: x
@@ -13,6 +14,7 @@ defmodule Func.Tuple do
 
       iex> Func.Tuple.map_fst({1, 2}, &Integer.to_string/1)
       {"1", 2}
+
   """
   def map_fst(pair, func)
   def map_fst({x, y}, func) do
@@ -24,6 +26,7 @@ defmodule Func.Tuple do
 
       iex> Func.Tuple.snd({1, 2})
       2
+
   """
   def snd(pair)
   def snd({_, x}), do: x
@@ -33,6 +36,7 @@ defmodule Func.Tuple do
 
       iex> Func.Tuple.map_snd({1, 2}, &Integer.to_string/1)
       {1, "2"}
+
   """
   def map_snd(pair, func)
   def map_snd({x, y}, func) do
@@ -44,6 +48,7 @@ defmodule Func.Tuple do
 
       iex> Func.Tuple.swap({1, 2})
       {2, 1}
+
   """
   def swap(pair)
   def swap({a, b}), do: {b, a}

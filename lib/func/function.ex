@@ -15,6 +15,7 @@ defmodule Func.Function do
 
       iex> Func.Function.id().(1)
       1
+
   """
   def id(), do: fn val -> val end
 
@@ -23,6 +24,7 @@ defmodule Func.Function do
 
       iex> Func.Function.const(1).(2)
       1
+
   """
   def const(val), do: fn _ -> val end
 
@@ -31,6 +33,7 @@ defmodule Func.Function do
 
       iex> Func.Function.run(1).()
       1
+
   """
   def run(val), do: fn -> val end
 
@@ -39,6 +42,7 @@ defmodule Func.Function do
 
       iex> Func.Function.curry(&+/2).(1).(2)
       3
+
   """
   def curry(func) do
     fn a ->
@@ -53,6 +57,7 @@ defmodule Func.Function do
 
       iex> Func.Function.uncurry(fn a -> fn b -> a - b end end).(2, 1)
       1
+
   """
   def uncurry(func), do: fn a, b -> func.(a).(b) end
 
@@ -61,6 +66,7 @@ defmodule Func.Function do
 
       iex> Func.Function.flip(&-/2).(1, 2)
       1
+
   """
   def flip(func), do: fn a, b -> func.(b, a) end
 
@@ -69,6 +75,7 @@ defmodule Func.Function do
 
       iex> Func.Function.curry_flip(&-/2).(1).(2)
       1
+
   """
   def curry_flip(func) do
     fn a ->
@@ -83,6 +90,7 @@ defmodule Func.Function do
 
       iex> Func.Function.compose(&String.to_integer/1, &Integer.to_string/1).(1)
       1
+
   """
   def compose(f, g), do: fn x -> f.(g.(x)) end
 end
