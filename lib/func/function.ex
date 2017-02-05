@@ -55,6 +55,16 @@ defmodule Func.Function do
   end
 
   @doc """
+  Uncurry function.
+
+      iex> Func.Function.uncurry(fn a -> fn b -> a - b end end).(2, 1)
+      1
+  """
+  def uncurry(func) do
+    fn a, b -> func.(a).(b) end
+  end
+
+  @doc """
   Flip function.
 
       iex> Func.Function.flip(&-/2).(1, 2)
