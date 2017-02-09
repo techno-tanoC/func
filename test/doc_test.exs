@@ -5,4 +5,5 @@ defmodule DocTest do
   doctest Func.Tuple
   doctest Func.Maybe
   doctest Func.Num
+  doctest Func.Presence
 end
