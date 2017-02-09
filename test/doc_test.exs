@@ -3,5 +3,5 @@ defmodule DocTest do
 
   doctest Func.Function
   doctest Func.Tuple
-  doctest Func.Integer
+  doctest Func.Maybe
 end
