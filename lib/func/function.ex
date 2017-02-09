@@ -29,13 +29,13 @@ defmodule Func.Function do
   def const(val), do: fn _ -> val end
 
   @doc """
-  The function which the value is got by execution.
+  The function which always returns the arg.
 
-      iex> Func.Function.run(1).()
+      iex> Func.Function.always(1).()
       1
 
   """
-  def run(val), do: fn -> val end
+  def always(val), do: fn -> val end
 
   @doc """
   Curry function.
