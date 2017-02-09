@@ -2,7 +2,7 @@ defmodule Func.Maybe do
   @moduledoc ~S"""
   """
 
-  @type nilable :: any
+  @type nilable :: nil | any
   @type func :: (nilable -> any)
 
   @doc ~S"""
