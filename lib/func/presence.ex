@@ -81,6 +81,7 @@ defmodule Func.Presence do
       false
 
   """
+  @spec empty?(any) :: boolean
   def empty?(val) do
     case val do
       []  -> true
@@ -102,5 +103,6 @@ defmodule Func.Presence do
       true
 
   """
+  @spec non_empty?(any) :: boolean
   def non_empty?(val), do: !empty?(val)
 end

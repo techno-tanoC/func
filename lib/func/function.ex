@@ -17,6 +17,7 @@ defmodule Func.Function do
       1
 
   """
+  @spec id() :: fun
   def id(), do: fn val -> val end
 
   @doc ~S"""
@@ -26,6 +27,7 @@ defmodule Func.Function do
       1
 
   """
+  @spec const(any) :: fun
   def const(val), do: fn _ -> val end
 
   @doc ~S"""
@@ -35,6 +37,7 @@ defmodule Func.Function do
       1
 
   """
+  @spec always(any) :: fun
   def always(val), do: fn -> val end
 
   @doc ~S"""
@@ -44,6 +47,7 @@ defmodule Func.Function do
       1
 
   """
+  @spec compose(fun, fun) :: fun
   def compose(f, g), do: fn x -> f.(g.(x)) end
 
   @doc ~S"""
@@ -54,6 +58,7 @@ defmodule Func.Function do
       6
 
   """
+  @spec curry(fun) :: fun
   def curry(fun) do
     {_, arity} = :erlang.fun_info(fun, :arity)
     curry(fun, arity, [])
@@ -70,6 +75,7 @@ defmodule Func.Function do
       3
 
   """
+  @spec uncurry(fun) :: fun
   def uncurry(fun), do: &(fun.(&1).(&2))
 
   @doc ~S"""
@@ -80,6 +86,7 @@ defmodule Func.Function do
       6
 
   """
+  @spec uncurry(fun, [any]) :: any
   def uncurry(fun, args) when is_list(args) do
     Enum.reduce(args, fun, &(&2).(&1))
   end
@@ -91,6 +98,7 @@ defmodule Func.Function do
       1
 
   """
+  @spec flip(fun) :: fun
   def flip(func), do: fn a, b -> func.(b, a) end
 
   @doc ~S"""
@@ -100,6 +108,7 @@ defmodule Func.Function do
       1
 
   """
+  @spec curry_flip(fun) :: fun
   def curry_flip(func) do
     compose(&curry/1, &flip/1).(func)
   end
