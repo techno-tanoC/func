@@ -17,14 +17,14 @@ defmodule Func.Num do
 
   @doc ~S"""
 
-      iex> Func.Num.nonzero?(0)
+      iex> Func.Num.non_zero?(0)
       false
-      iex> Func.Num.nonzero?(1)
+      iex> Func.Num.non_zero?(1)
       true
 
   """
-  @spec nonzero?(num) :: boolean
-  def nonzero?(num), do: !zero?(num)
+  @spec non_zero?(num) :: boolean
+  def non_zero?(num), do: !zero?(num)
 
   @doc ~S"""
 
