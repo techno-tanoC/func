@@ -2,7 +2,6 @@ defmodule Func.Num do
   @moduledoc ~S"""
   """
 
-
   @type num :: number
 
   @doc ~S"""
@@ -13,6 +12,7 @@ defmodule Func.Num do
       false
 
   """
+  @spec zero?(num) :: boolean
   def zero?(num), do: num == 0
 
   @doc ~S"""
@@ -23,6 +23,7 @@ defmodule Func.Num do
       true
 
   """
+  @spec nonzero?(num) :: boolean
   def nonzero?(num), do: !zero?(num)
 
   @doc ~S"""
@@ -35,6 +36,7 @@ defmodule Func.Num do
       false
 
   """
+  @spec positive?(num) :: boolean
   def positive?(num), do: num > 0
 
   @doc ~S"""
@@ -47,6 +49,7 @@ defmodule Func.Num do
       true
 
   """
+  @spec negative?(num) :: boolean
   def negative?(num), do: num < 0
 
   @doc ~S"""
@@ -56,6 +59,7 @@ defmodule Func.Num do
       42
 
   """
+  @spec succ(num) :: num
   def succ(int), do: int + 1
 
   @doc ~S"""
@@ -65,5 +69,6 @@ defmodule Func.Num do
       42
 
   """
+  @spec pred(num) :: num
   def pred(int), do: int - 1
 end
