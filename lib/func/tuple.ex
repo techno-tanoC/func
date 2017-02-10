@@ -1,5 +1,5 @@
 defmodule Func.Tuple do
-  @doc """
+  @doc ~S"""
   Takes the first element of Pair.
 
       iex> Func.Tuple.fst({1, 2})
@@ -9,7 +9,7 @@ defmodule Func.Tuple do
   def fst(pair)
   def fst({x, _}), do: x
 
-  @doc """
+  @doc ~S"""
   Maps the first element, then returns pair.
 
       iex> Func.Tuple.map_fst({1, 2}, &Integer.to_string/1)
@@ -21,7 +21,7 @@ defmodule Func.Tuple do
     {func.(x), y}
   end
 
-  @doc """
+  @doc ~S"""
   Takes the second element of pair.
 
       iex> Func.Tuple.snd({1, 2})
@@ -31,7 +31,7 @@ defmodule Func.Tuple do
   def snd(pair)
   def snd({_, x}), do: x
 
-  @doc """
+  @doc ~S"""
   Maps the second element, then returns pair.
 
       iex> Func.Tuple.map_snd({1, 2}, &Integer.to_string/1)
@@ -43,7 +43,7 @@ defmodule Func.Tuple do
     {x, func.(y)}
   end
 
-  @doc """
+  @doc ~S"""
   Swaps elements of pair.
 
       iex> Func.Tuple.swap({1, 2})

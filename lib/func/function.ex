@@ -1,5 +1,5 @@
 defmodule Func.Function do
-  @moduledoc """
+  @moduledoc ~S"""
   Functions for function.
 
   ## Example
@@ -10,7 +10,7 @@ defmodule Func.Function do
       state == 1
   """
 
-  @doc """
+  @doc ~S"""
   Identity function. It always returns its argument.
 
       iex> Func.Function.id().(1)
@@ -19,7 +19,7 @@ defmodule Func.Function do
   """
   def id(), do: fn val -> val end
 
-  @doc """
+  @doc ~S"""
   Constant function. It always returns first argument.
 
       iex> Func.Function.const(1).(2)
@@ -28,7 +28,7 @@ defmodule Func.Function do
   """
   def const(val), do: fn _ -> val end
 
-  @doc """
+  @doc ~S"""
   The function which always returns the arg.
 
       iex> Func.Function.always(1).()
@@ -37,7 +37,7 @@ defmodule Func.Function do
   """
   def always(val), do: fn -> val end
 
-  @doc """
+  @doc ~S"""
   Composition function. Compose functions.
 
       iex> Func.Function.compose(&String.to_integer/1, &Integer.to_string/1).(1)
@@ -84,7 +84,7 @@ defmodule Func.Function do
     Enum.reduce(args, fun, &(&2).(&1))
   end
 
-  @doc """
+  @doc ~S"""
   Flip function.
 
       iex> Func.Function.flip(&-/2).(1, 2)
@@ -93,7 +93,7 @@ defmodule Func.Function do
   """
   def flip(func), do: fn a, b -> func.(b, a) end
 
-  @doc """
+  @doc ~S"""
   Flip and curry function.
 
       iex> Func.Function.curry_flip(&-/2).(1).(2)
