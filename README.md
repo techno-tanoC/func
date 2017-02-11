@@ -9,7 +9,7 @@ by adding `func` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:func, "~> 0.1.0"}]
+  [{:func, "~> 0.3.0"}]
 end
 ```
 
