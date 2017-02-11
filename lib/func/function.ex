@@ -5,9 +5,9 @@ defmodule Func.Function do
   ## Example
 
       import Func.Function
-      {:ok, pid} = Agent.start_link(run(1))
+      {:ok, pid} = Agent.start_link(always(1))
       state = Agent.get(pid, id())
-      state == 1
+
   """
 
   @doc ~S"""
@@ -111,5 +111,11 @@ defmodule Func.Function do
   @spec curry_flip(fun) :: fun
   def curry_flip(func) do
     compose(&curry/1, &flip/1).(func)
+  end
+
+  defmacro __using__(_) do
+    quote do
+      import __MODULE__
+    end
   end
 end

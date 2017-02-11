@@ -1,4 +1,7 @@
 defmodule Func.Tuple do
+  @moduledoc ~S"""
+  """
+
   @doc ~S"""
   Takes the first element of Pair.
 
@@ -11,7 +14,7 @@ defmodule Func.Tuple do
   def fst({x, _}), do: x
 
   @doc ~S"""
-  Maps the first element, then returns pair.
+  Maps the first element, then returns the pair.
 
       iex> Func.Tuple.map_fst({1, 2}, &Integer.to_string/1)
       {"1", 2}
@@ -35,7 +38,7 @@ defmodule Func.Tuple do
   def snd({_, x}), do: x
 
   @doc ~S"""
-  Maps the second element, then returns pair.
+  Maps the second element, then returns the pair.
 
       iex> Func.Tuple.map_snd({1, 2}, &Integer.to_string/1)
       {1, "2"}
@@ -57,4 +60,10 @@ defmodule Func.Tuple do
   @spec swap({any, any}) :: {any, any}
   def swap(pair)
   def swap({a, b}), do: {b, a}
+
+  defmacro __using__(_) do
+    quote do
+      import __MODULE__
+    end
+  end
 end

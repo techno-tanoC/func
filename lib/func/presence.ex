@@ -3,6 +3,7 @@ defmodule Func.Presence do
   """
 
   @doc ~S"""
+  Checks the value is present.
 
       iex> Func.Presence.present?(nil)
       false
@@ -31,6 +32,7 @@ defmodule Func.Presence do
   end
 
   @doc ~S"""
+  The opposite of `present?`
 
       iex> Func.Presence.blank?(nil)
       true
@@ -50,6 +52,7 @@ defmodule Func.Presence do
   def blank?(val), do: !present?(val)
 
   @doc ~S"""
+  It returns the itself when the value is present, or returns nil.
 
       iex> Func.Presence.presence(nil)
       nil
@@ -70,6 +73,7 @@ defmodule Func.Presence do
   end
 
   @doc ~S"""
+  Checks the value is empty.
 
       iex> Func.Presence.empty?([])
       true
@@ -92,6 +96,7 @@ defmodule Func.Presence do
   end
 
   @doc ~S"""
+  The opposite of `empty?`
 
       iex> Func.Presence.non_empty?([])
       false
@@ -105,4 +110,10 @@ defmodule Func.Presence do
   """
   @spec non_empty?(any) :: boolean
   def non_empty?(val), do: !empty?(val)
+
+  defmacro __using__(_) do
+    quote do
+      import __MODULE__
+    end
+  end
 end

@@ -5,6 +5,7 @@ defmodule Func.Num do
   @type num :: number
 
   @doc ~S"""
+  Checks the value is zero.
 
       iex> Func.Num.zero?(0)
       true
@@ -16,6 +17,7 @@ defmodule Func.Num do
   def zero?(num), do: num == 0
 
   @doc ~S"""
+  Checks the value is not zero.
 
       iex> Func.Num.non_zero?(0)
       false
@@ -27,6 +29,7 @@ defmodule Func.Num do
   def non_zero?(num), do: !zero?(num)
 
   @doc ~S"""
+  Checks the value is a positive number.
 
       iex> Func.Num.positive?(1)
       true
@@ -40,6 +43,7 @@ defmodule Func.Num do
   def positive?(num), do: num > 0
 
   @doc ~S"""
+  Checks the value is a negative number.
 
       iex> Func.Num.negative?(1)
       false
@@ -71,4 +75,10 @@ defmodule Func.Num do
   """
   @spec pred(num) :: num
   def pred(int), do: int - 1
+
+  defmacro __using__(_) do
+    quote do
+      import __MODULE__
+    end
+  end
 end
