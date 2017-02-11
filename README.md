@@ -1,11 +1,10 @@
 # Func
 
-**TODO: Add description**
+Functions inspired by haskell and ruby(activesupport).
+
+The documentation is [here](https://hexdocs.pm/func/api-reference.html)
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `func` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -13,7 +12,23 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/func](https://hexdocs.pm/func).
+## Usage
 
+`use Func` or import the respective module.
+
+```elixir
+use Func
+
+# or
+
+import Func.{Function, Maybe}
+```
+
+### Func.Function
+
+#### Examples
+
+```elixir
+{:ok, pid} = Agent.start_link(always(1))
+Agent.get(pid, id()) #=> 1
+```
