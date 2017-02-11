@@ -6,4 +6,5 @@ defmodule DocTest do
   doctest Func.Maybe
   doctest Func.Num
   doctest Func.Presence
+  doctest Func.Bool
 end
