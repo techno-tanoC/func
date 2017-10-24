@@ -7,4 +7,5 @@ defmodule DocTest do
   doctest Func.Num
   doctest Func.Presence
   doctest Func.Bool
+  doctest Func.Result
 end
