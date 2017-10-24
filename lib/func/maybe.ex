@@ -50,30 +50,30 @@ defmodule Func.Maybe do
   If the list is empty, it returns nil. Otherwise, it returns the first element of the list.
   In other words, safe head function.
 
-      iex> Func.Maybe.fromList([])
+      iex> Func.Maybe.from_list([])
       nil
-      iex> Func.Maybe.fromList([1])
+      iex> Func.Maybe.from_list([1])
       1
-      iex> Func.Maybe.fromList([1, 2])
+      iex> Func.Maybe.from_list([1, 2])
       1
 
   """
-  @spec fromList([] | [any]) :: nilable
-  def fromList([]), do: nil
-  def fromList([x|_]), do: x
+  @spec from_list([] | [any]) :: nilable
+  def from_list([]), do: nil
+  def from_list([x|_]), do: x
 
   @doc ~S"""
   It returns the singleton list when not nil. If the value is nil, it returns an empty list.
 
-      iex> Func.Maybe.toList(nil)
+      iex> Func.Maybe.to_list(nil)
       []
-      iex> Func.Maybe.toList(1)
+      iex> Func.Maybe.to_list(1)
       [1]
 
   """
-  @spec toList(nilable) :: [] | [any]
-  def toList(nil), do: []
-  def toList(val), do: [val]
+  @spec to_list(nilable) :: [] | [any]
+  def to_list(nil), do: []
+  def to_list(val), do: [val]
 
   defmacro __using__(_) do
     quote do
