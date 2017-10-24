@@ -131,4 +131,10 @@ defmodule Func.Result do
   def collect_oks(vals) do
     vals |> Enum.filter(&ok?/1) |> Enum.map(fn {:ok, val} -> val end)
   end
+
+  defmacro __using__(_) do
+    quote do
+      import __MODULE__
+    end
+  end
 end
