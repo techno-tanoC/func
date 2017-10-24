@@ -4,7 +4,7 @@ defmodule Func.Mixfile do
   def project do
     [
       app: :func,
-      version: "0.3.0",
+      version: "0.4.0",
       elixir: "~> 1.4",
       description: "Functions for functional programming.",
       package: [
