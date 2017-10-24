@@ -16,7 +16,11 @@ defmodule Func.Result do
   """
   @spec map({any, any}, fun) :: {any, any}
   def map({:ok, val}, f), do: {:ok, f.(val)}
-  def map(val, _), do: val
+  def map({:error, _} = val, _), do: val
+  def map(val, _) do
+    warn(val)
+    val
+  end
 
   @doc ~S"""
   Maps and flatten if the value is ok. Otherwise, return itself.
@@ -30,7 +34,11 @@ defmodule Func.Result do
   """
   @spec flat_map({any, any}, fun) :: {any, any}
   def flat_map({:ok, val}, f), do: f.(val)
-  def flat_map(val, _), do: val
+  def flat_map({:error, _} = val, _), do: val
+  def flat_map(val, _) do
+    warn(val)
+    val
+  end
 
   @doc ~S"""
   Maps the result if the value is error. Otherwise, return itself.
@@ -43,8 +51,12 @@ defmodule Func.Result do
       1
   """
   @spec map_error({any, any}, fun) :: {any, any}
+  def map_error({:ok, _} = val, _), do: val
   def map_error({:error, val}, f), do: {:error, f.(val)}
-  def map_error(val, _), do: val
+  def map_error(val, _) do
+    warn(val)
+    val
+  end
 
   @doc ~S"""
   Maps and flatten if the value is error. Otherwise, return itself.
@@ -57,8 +69,12 @@ defmodule Func.Result do
       1
   """
   @spec flat_map_error({any, any}, fun) :: {any, any}
+  def flat_map_error({:ok, _} = val, _), do: val
   def flat_map_error({:error, val}, f), do: f.(val)
-  def flat_map_error(val, _), do: val
+  def flat_map_error(val, _) do
+    warn(val)
+    val
+  end
 
   @doc ~S"""
   Creates the ok value
@@ -119,7 +135,10 @@ defmodule Func.Result do
   @spec join({any, any}, fun, fun) :: any
   def join({:ok, val}, f, _), do: f.(val)
   def join({:error, val}, _, g), do: g.(val)
-  def join(val, _, _), do: val
+  def join(val, _, _) do
+    warn(val)
+    val
+  end
 
   @doc ~S"""
   Collects only ok values.
@@ -130,6 +149,10 @@ defmodule Func.Result do
   @spec collect_oks([{any, any}]) :: [any]
   def collect_oks(vals) do
     vals |> Enum.filter(&ok?/1) |> Enum.map(fn {:ok, val} -> val end)
+  end
+
+  defp warn(val) do
+    IO.warn "#{val} is not {:ok, val} nor {:error, val}."
   end
 
   defmacro __using__(_) do
