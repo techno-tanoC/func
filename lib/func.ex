@@ -4,12 +4,12 @@ defmodule Func do
 
   defmacro __using__(_opts) do
     quote do
-      import Func.Function
-      import Func.Tuple
-      import Func.Maybe
-      import Func.Num
-      import Func.Presence
-      import Func.Bool
+      alias Func.Function
+      alias Func.Tuple
+      alias Func.Maybe
+      alias Func.Num
+      alias Func.Presence
+      alias Func.Bool
     end
   end
 end
